@@ -7,7 +7,7 @@ from tabulate import tabulate
 class ClassifiersAccuracy:
     def test(self, classifiers, vectorizers, train_data, test_data):
         data = []
-        pbar = tqdm(total=len(classifiers) * len(vectorizers))
+        progress_bar = tqdm(total=len(classifiers) * len(vectorizers))
 
         for classifier in classifiers:
             for vectorizer in vectorizers:
@@ -16,17 +16,19 @@ class ClassifiersAccuracy:
                 test_spam_ham = test_data.v1
                 test_messages = test_data.v2
 
-                # train
+                # prediction model training
                 train_vectorize_text = vectorizer.fit_transform(train_messages)
                 classifier.fit(train_vectorize_text, train_spam_ham)
 
                 # score
                 test_vectorize_text = vectorizer.transform(test_messages)
-                score = classifier.score(test_vectorize_text, test_spam_ham) * 100
+                score = classifier.score(test_vectorize_text, test_spam_ham)
+                score = round(score * 100, 2)
 
-                data.append([classifier.__class__.__name__, vectorizer.__class__.__name__, round(score, 2)])
-                pbar.update(1)
+                data.append([classifier.__class__.__name__, vectorizer.__class__.__name__, score])
+                progress_bar.update(1)
 
-        pbar.close()
+        progress_bar.close()
+
         data.sort(key=operator.itemgetter(2), reverse=True)
         print(tabulate(data, headers=['Classifier', 'Vectorizer', 'Correct predictions, %'], tablefmt='orgtbl'))
