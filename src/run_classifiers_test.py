@@ -13,10 +13,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
-from src.SpamFilter.ClassifiersAccuracy import ClassifiersAccuracy
+from SpamFilter.ClassifiersAccuracy import ClassifiersAccuracy
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument('--dataset-path', default='./datasets/spam.csv', help='Run classifiers accuracy test')
+argument_parser.add_argument('--dataset-path', default='/app/datasets/spam.csv', help='Run classifiers accuracy test')
 
 args = argument_parser.parse_args()
 
@@ -30,19 +30,19 @@ classifiers = [
     BernoulliNB(),
     RandomForestClassifier(n_estimators=100, n_jobs=-1),
     AdaBoostClassifier(),
-    BaggingClassifier(),
-    ExtraTreesClassifier(),
-    GradientBoostingClassifier(),
-    DecisionTreeClassifier(),
-    CalibratedClassifierCV(),
-    DummyClassifier(),
-    PassiveAggressiveClassifier(),
-    RidgeClassifier(),
-    RidgeClassifierCV(),
-    SGDClassifier(),
-    OneVsRestClassifier(SVC(kernel='linear')),
-    OneVsRestClassifier(LogisticRegression()),
-    KNeighborsClassifier()
+    # BaggingClassifier(),
+    # ExtraTreesClassifier(),
+    # GradientBoostingClassifier(),
+    # DecisionTreeClassifier(),
+    # CalibratedClassifierCV(),
+    # DummyClassifier(),
+    # PassiveAggressiveClassifier(),
+    # RidgeClassifier(),
+    # RidgeClassifierCV(),
+    # SGDClassifier(),
+    # OneVsRestClassifier(SVC(kernel='linear')),
+    # OneVsRestClassifier(LogisticRegression()),
+    # KNeighborsClassifier()
 ]
 vectorizers = [
     CountVectorizer(),
