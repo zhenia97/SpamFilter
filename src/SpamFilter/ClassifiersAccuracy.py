@@ -17,12 +17,12 @@ class ClassifiersAccuracy:
                 test_messages = test_data.v2
 
                 # train
-                vectorize_text = vectorizer.fit_transform(train_messages)
-                classifier.fit(vectorize_text, train_spam_ham)
+                train_vectorize_text = vectorizer.fit_transform(train_messages)
+                classifier.fit(train_vectorize_text, train_spam_ham)
 
                 # score
-                vectorize_text = vectorizer.transform(test_messages)
-                score = classifier.score(vectorize_text, test_spam_ham) * 100
+                test_vectorize_text = vectorizer.transform(test_messages)
+                score = classifier.score(test_vectorize_text, test_spam_ham) * 100
 
                 data.append([classifier.__class__.__name__, vectorizer.__class__.__name__, round(score, 2)])
                 pbar.update(1)
