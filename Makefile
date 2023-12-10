@@ -1,9 +1,13 @@
+ARGS = $(filter-out $@,$(MAKECMDGOALS))
+
 hello:
 	docker compose run -it --rm api echo "Hello world!"
 bash:
 	docker compose run -it --rm api bash
 run-predict:
-	docker compose run -it --rm api python src/predict.py "casino free dollars call me"
+	docker compose run -it --rm api python src/predict.py "${ARGS}"
+run-classifiers-test:
+	docker compose run -it --rm api python src/classifiers-test.py
 
 help:
 	@echo 'Usage: make [target]'

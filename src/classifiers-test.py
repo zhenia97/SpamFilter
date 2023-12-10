@@ -29,24 +29,24 @@ test = data[4000:]
 classifiers = [
     BernoulliNB(),
     RandomForestClassifier(n_estimators=100, n_jobs=-1),
+    DummyClassifier(),
     AdaBoostClassifier(),
-    # BaggingClassifier(),
-    # ExtraTreesClassifier(),
-    # GradientBoostingClassifier(),
-    # DecisionTreeClassifier(),
-    # CalibratedClassifierCV(),
-    # DummyClassifier(),
-    # PassiveAggressiveClassifier(),
-    # RidgeClassifier(),
-    # RidgeClassifierCV(),
-    # SGDClassifier(),
-    # OneVsRestClassifier(SVC(kernel='linear')),
-    # OneVsRestClassifier(LogisticRegression()),
-    # KNeighborsClassifier()
+    BaggingClassifier(),
+    ExtraTreesClassifier(),
+    GradientBoostingClassifier(),
+    DecisionTreeClassifier(),
+    CalibratedClassifierCV(),
+    PassiveAggressiveClassifier(),
+    RidgeClassifier(),
+    RidgeClassifierCV(),
+    SGDClassifier(),
+    OneVsRestClassifier(SVC(kernel='linear')),
+    OneVsRestClassifier(LogisticRegression()),
+    KNeighborsClassifier()
 ]
 vectorizers = [
-    CountVectorizer(),
     TfidfVectorizer(),
+    CountVectorizer(),
     HashingVectorizer()
 ]
 
