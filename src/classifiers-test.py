@@ -22,25 +22,25 @@ argument_parser.add_argument('--dataset-path', default=DATASET_PATH, help='Run c
 
 args = argument_parser.parse_args()
 
-print('Start classifiers accuracy test', '\n')
+print('Start classifiers accuracy test, this may take a few minutes', '\n')
 
 data = pandas.read_csv(args.dataset_path, encoding='latin-1')
 learn = data[:4000]
 test = data[4000:]
 
 classifiers = [
-    # BernoulliNB(),
-    # RandomForestClassifier(n_estimators=100, n_jobs=-1),
-    # DummyClassifier(),
-    # AdaBoostClassifier(),
-    # BaggingClassifier(),
-    # ExtraTreesClassifier(),
-    # GradientBoostingClassifier(),
-    # DecisionTreeClassifier(),
-    # CalibratedClassifierCV(),
-    # PassiveAggressiveClassifier(),
-    # RidgeClassifier(),
-    # RidgeClassifierCV(),
+    BernoulliNB(),
+    RandomForestClassifier(n_estimators=100, n_jobs=-1),
+    DummyClassifier(),
+    AdaBoostClassifier(),
+    BaggingClassifier(),
+    ExtraTreesClassifier(),
+    GradientBoostingClassifier(),
+    DecisionTreeClassifier(),
+    CalibratedClassifierCV(),
+    PassiveAggressiveClassifier(),
+    RidgeClassifier(),
+    RidgeClassifierCV(),
     SGDClassifier(),
     OneVsRestClassifier(SVC(kernel='linear')),
     OneVsRestClassifier(LogisticRegression()),
@@ -48,8 +48,8 @@ classifiers = [
 ]
 vectorizers = [
     TfidfVectorizer(),
-    # CountVectorizer(),
-    # HashingVectorizer()
+    CountVectorizer(),
+    HashingVectorizer()
 ]
 
 classifiers_accuracy = ClassifiersAccuracy()
