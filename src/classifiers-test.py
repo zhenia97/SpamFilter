@@ -12,6 +12,7 @@ from sklearn.naive_bayes import BernoulliNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from tabulate import tabulate
 
 from SpamFilter.ClassifiersAccuracy import ClassifiersAccuracy
 from config import DATASET_PATH
@@ -28,18 +29,18 @@ learn = data[:4000]
 test = data[4000:]
 
 classifiers = [
-    BernoulliNB(),
-    RandomForestClassifier(n_estimators=100, n_jobs=-1),
-    DummyClassifier(),
-    AdaBoostClassifier(),
-    BaggingClassifier(),
-    ExtraTreesClassifier(),
-    GradientBoostingClassifier(),
-    DecisionTreeClassifier(),
-    CalibratedClassifierCV(),
-    PassiveAggressiveClassifier(),
-    RidgeClassifier(),
-    RidgeClassifierCV(),
+    # BernoulliNB(),
+    # RandomForestClassifier(n_estimators=100, n_jobs=-1),
+    # DummyClassifier(),
+    # AdaBoostClassifier(),
+    # BaggingClassifier(),
+    # ExtraTreesClassifier(),
+    # GradientBoostingClassifier(),
+    # DecisionTreeClassifier(),
+    # CalibratedClassifierCV(),
+    # PassiveAggressiveClassifier(),
+    # RidgeClassifier(),
+    # RidgeClassifierCV(),
     SGDClassifier(),
     OneVsRestClassifier(SVC(kernel='linear')),
     OneVsRestClassifier(LogisticRegression()),
@@ -47,9 +48,12 @@ classifiers = [
 ]
 vectorizers = [
     TfidfVectorizer(),
-    CountVectorizer(),
-    HashingVectorizer()
+    # CountVectorizer(),
+    # HashingVectorizer()
 ]
 
 classifiers_accuracy = ClassifiersAccuracy()
-classifiers_accuracy.test(classifiers, vectorizers, learn, test)
+data = classifiers_accuracy.test(classifiers, vectorizers, learn, test)
+
+print(tabulate(data, headers=['Classifier', 'Vectorizer', 'Correct predictions, %'], tablefmt='orgtbl'))
+

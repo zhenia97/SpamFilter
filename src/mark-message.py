@@ -22,3 +22,5 @@ with open(DATASET_PATH, 'a') as f_object:
     writer_object = writer(f_object, lineterminator=',,,\n')
     writer_object.writerow(row)
     f_object.close()
+
+print('Train dataset message marked as "' + label + '"')

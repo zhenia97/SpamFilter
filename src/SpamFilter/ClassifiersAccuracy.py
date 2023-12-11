@@ -1,7 +1,6 @@
 import operator
 
 from tqdm import tqdm
-from tabulate import tabulate
 
 
 class ClassifiersAccuracy:
@@ -31,4 +30,4 @@ class ClassifiersAccuracy:
         progress_bar.close()
 
         data.sort(key=operator.itemgetter(2), reverse=True)
-        print(tabulate(data, headers=['Classifier', 'Vectorizer', 'Correct predictions, %'], tablefmt='orgtbl'))
+        return data

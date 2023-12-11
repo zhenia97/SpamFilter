@@ -18,10 +18,10 @@ help:
 	@echo 'Available targets:'
 	@echo '  help                                   Show this help and exit'
 	@echo '  hello                                  Check service setup succesfull'
-	@echo '  bash                                   Go to the application container)'
+	@echo '  bash                                   Go to the application container'
 	@echo '  predict "your message here"            Predict spam/not spam for your message'
-	@echo '  mark-as-spam "your message here"       Mark your message as spam for train dataset'
-	@echo '  mark-as-not-spam "your message here"   Mark your message as not spam for train dataset'
+	@echo '  mark-spam "your message here"          Mark your message as spam for train dataset'
+	@echo '  mark-not-spam "your message here"      Mark your message as not spam for train dataset'
 	@echo '  classifiers-test                       Run classifiers accuracy test'
 	@echo ''
 
