@@ -3,30 +3,18 @@ from csv import writer
 
 argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument('message', help='Message you want to check')
-argument_parser.add_argument('--spam', help='Message you want to check')
-argument_parser.add_argument('--ham', help='Message you want to check')
+argument_parser.add_argument('--spam', dest='is_spam', action='store_true')
+argument_parser.add_argument('--ham', dest='is_spam', action='store_false')
 args = argument_parser.parse_args()
 
-if args.ham is None and args.spam is None:
-    print('Error: label not provided')
+label = ''
+if args.is_spam:
+    label = 'spam'
+else:
+    label = 'ham'
 
-if args.ham:
-    pass
-print(args)
-
-# List that we want to add as a new row
-List = [6, 'William', 5532, 1, 'UAE']
-
-# Open our existing CSV file in append mode
-# Create a file object for this file
-with open('datasets/spam.csv', 'a') as f_object:
-    # Pass this file object to csv.writer()
-    # and get a writer object
-    writer_object = writer(f_object)
-
-    # Pass the list as an argument into
-    # the writerow()
-    writer_object.writerow(List)
-
-    # Close the file object
+with open('/app/datasets/spam.csv', 'a') as f_object:
+    row = [label, args.message]
+    writer_object = writer(f_object, lineterminator=',,,\n')
+    writer_object.writerow(row)
     f_object.close()

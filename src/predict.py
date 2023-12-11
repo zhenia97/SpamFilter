@@ -7,7 +7,7 @@ argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument('message',  help='Message you want to check')
 args = argument_parser.parse_args()
 
-print('Your messsage: "' + args.message + '"')
+print('Your message: "' + args.message + '"')
 
 train_data = pandas.read_csv('/app/datasets/spam.csv', encoding='latin-1')
 
