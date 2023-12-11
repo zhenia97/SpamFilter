@@ -14,13 +14,14 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
 from SpamFilter.ClassifiersAccuracy import ClassifiersAccuracy
+from config import DATASET_PATH
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument('--dataset-path', default='/app/datasets/spam.csv', help='Run classifiers accuracy test')
+argument_parser.add_argument('--dataset-path', default=DATASET_PATH, help='Run classifiers accuracy test')
 
 args = argument_parser.parse_args()
 
-print('Run classifiers accuracy test', '\n')
+print('Start classifiers accuracy test', '\n')
 
 data = pandas.read_csv(args.dataset_path, encoding='latin-1')
 learn = data[:4000]

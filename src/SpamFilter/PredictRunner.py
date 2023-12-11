@@ -1,7 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
-from tabulate import tabulate
 
 
 class PredictRunner:
@@ -15,9 +14,10 @@ class PredictRunner:
         # predict = classifier.predict(vectorize_message)[0]
         predict_proba = classifier.predict_proba(vectorize_message).tolist()
 
-        is_ham = round(predict_proba[0][0] * 100, 2)
-        is_spam = round(predict_proba[0][1] * 100, 2)
-        data = [[is_spam, is_ham]]
+        score_spam = round(predict_proba[0][1] * 100, 2)
+        score_ham = round(predict_proba[0][0] * 100, 2)
 
-        print('Prediction result:')
-        print(tabulate(data, headers=['Spam probability, %', 'Not spam probability, %'], tablefmt='orgtbl'))
+        return {
+            'score_spam': score_spam,
+            'score_ham': score_ham,
+        }

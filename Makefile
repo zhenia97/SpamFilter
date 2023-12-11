@@ -6,10 +6,10 @@ bash:
 	docker compose run -it --rm api bash
 predict:
 	docker compose run -it --rm api python src/predict.py "${ARGS}"
-mark-as-spam:
-	docker compose run -it --rm api python src/mark-message-as-spam.py "${ARGS}" --spam
+mark-spam:
+	docker compose run -it --rm api python src/mark-message.py "${ARGS}" --spam
 mark-not-spam:
-	docker compose run -it --rm api python src/mark-message-as-spam.py "${ARGS}" --spam
+	docker compose run -it --rm api python src/mark-message.py "${ARGS}" --ham
 classifiers-test:
 	docker compose run -it --rm api python src/classifiers-test.py
 
