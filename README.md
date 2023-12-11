@@ -1,7 +1,7 @@
 # SpamFilter
 Console tool used for: 
 * Classify messages as spam or not spam
-* Test `sklearn` classifiers accuracy. Available K-neighbors classifier, logistic regression, naive bayes etc.
+* Test `sklearn` classifiers accuracy and choose the best one. Available K-neighbors classifier, logistic regression, naive bayes etc.
 * Training dataset with your custom messages
 
 ## Install
@@ -9,11 +9,12 @@ Console tool used for:
     <summary>
         <b>Show instructions</b>
     </summary>
+
 1. Clone repository:
 ```bash
 git clone https://github.com/zhenia97/SpamFilterApi.git /your_work_dir
 ```
-2. Test application setup:
+2. Verify application setup:
 
 ```bash
 make hello
@@ -30,11 +31,10 @@ For set up your custom classifier update the file [predict.py](src/predict.py), 
 predict_runner = PredictRunner()
 predict_runner.predict(args.message, train_data, YOUR_CUSTOM_CLASSIFIER, vectorizer)
 ```
-Run predict for your message:
+Run predict for your message and receive result with spam probabilities:
 ```bash
 make predict "Hello, have a nice day"
 ```
-You receive result with spam probabilities:
 ```bash
 Your message: "Hello, have a nice day"
 Prediction result:
@@ -54,7 +54,7 @@ Prediction result:
 |                 87.47 |                     12.53 |
 ```
 
-### Train dataset
+### Dataset training
 You can train a dataset on your messages for better classifier prediction,
 message will be saved into [spam.csv](datasets/spam.csv)
 ```bash

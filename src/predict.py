@@ -9,7 +9,7 @@ from SpamFilter.PredictRunner import PredictRunner
 from config import DATASET_PATH
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument('message',  help='Message you want to check')
+argument_parser.add_argument('message', help='Message you want to check')
 args = argument_parser.parse_args()
 
 print('Your message: "' + args.message + '"')
