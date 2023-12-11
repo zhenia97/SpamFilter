@@ -56,7 +56,8 @@ Prediction result:
 
 ### Dataset training
 You can train a dataset on your messages for better classifier prediction,
-message will be saved into [spam.csv](datasets/spam.csv)
+message will be saved into [spam.csv](datasets/spam.csv)</br>
+For simplify tool train model is re-trained every `make predict` request (it does not last long - a couple of seconds)
 ```bash
 make mark-spam "Win free BTC here, hot sale!"
 ```
@@ -92,7 +93,7 @@ Result:
 | OneVsRestClassifier         | CountVectorizer   |                    98.16 |
 | RidgeClassifier             | TfidfVectorizer   |                    98.10 |
 ..............................................................................
-.................................. and ~30 more ..............................
+............................... and ~30 rows more ............................
 ..............................................................................
 ```
 
