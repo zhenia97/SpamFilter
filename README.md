@@ -99,4 +99,4 @@ Result:
 
 ## Useful links
 * [Kaddle SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
-* [Scikit-learn Machine Learning in Python: Classifier comparison](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
+* [Scikit-learn Machine Learning in Python: Classifier comparison](https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html)
